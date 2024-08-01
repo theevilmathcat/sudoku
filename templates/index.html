@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Solver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <h1>Sudoku Solver</h1>
+    <form method="post">
+        <table>
+            {% for i in range(9) %}
+                <tr>
+                    {% for j in range(9) %}
+                        <td class="{% if i % 3 == 0 and j % 3 == 0 %}subgrid{% endif %}">
+                            <input type="number" name="cell_{{ i }}_{{ j }}" min="0" max="9" value="{{ puzzle[i][j] if puzzle else '' }}">
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+        <div class="button-container">
+            <button type="submit" class="solve-button">Solve</button>
+            <button type="submit" name="reset_button" value="true" class="reset-button">Reset</button>
+        </div>
+    </form>
+
+    {% if message %}
+        <p class="message">{{ message }}</p>
+    {% elif puzzle %}
+        <h2>{{ 'Solved Puzzle:' if solved else 'No Solution Found' }}</h2>
+        <table>
+            {% for row in puzzle %}
+                <tr>
+                    {% for cell in row %}
+                        <td class="output-cell">{{ cell if cell != 0 else '' }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

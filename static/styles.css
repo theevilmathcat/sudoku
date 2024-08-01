@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+td {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #000; /* Default black border for all cells */
+}
+
+/* Reset the border style for cells to avoid overlaps */
+table td {
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+/* Thicker borders for the third and sixth rows */
+table tr:nth-child(3),
+table tr:nth-child(6) {
+    border-bottom: 2px solid #000;
+}
+
+/* Thicker borders for the third and sixth columns */
+table td:nth-child(3),
+table td:nth-child(6) {
+    border-right: 2px solid #000;
+}
+
+input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.2em; /* Font size for input fields */
+    text-align: center;
+    background-color: #fff; /* White background for input fields */
+    box-sizing: border-box;
+    overflow: hidden; /* Remove scrollbars */
+}
+
+/* Hide spinner controls for number inputs */
+input[type="number"] {
+    -webkit-appearance: none; /* WebKit browsers */
+    appearance: textfield; /* Standard syntax */
+}
+
+/* Additional reset styles for WebKit browsers */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input:focus {
+    background-color: #fff;
+    border: 1px solid #007bff;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px; /* Add some margin to space the buttons */
+}
+
+.solve-button {
+    background-color: #007bff; /* Blue background for Solve button */
+    color: white;
+}
+
+.solve-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.reset-button {
+    background-color: #dc3545; /* Red background for Reset button */
+    color: white;
+}
+
+.reset-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+.message {
+    color: #d9534f;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    gap: 10px; /* Add some space between the buttons */
+}
+
+/* Font size for solved puzzle cells */
+.output-cell {
+    font-size: 1.5em; /* Increase the font size for output numbers */
+}
