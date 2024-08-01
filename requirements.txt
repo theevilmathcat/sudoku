@@ -17,6 +17,7 @@ Flask-SQLAlchemy==3.1.1
 fonttools==4.53.1
 fsspec==2024.6.1
 greenlet==3.0.3
+gunicorn==22.0.0
 huggingface-hub==0.23.4
 idna==3.7
 intel-openmp==2021.4.0
