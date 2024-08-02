@@ -15,6 +15,31 @@ def get_possible_candidates(puzzle, row_index, col_index):
     possible_candidates = list_of_possibilities - present_numbers
     return possible_candidates
 
+def is_valid_puzzle(puzzle):
+    for i in range(9):
+        row_numbers = set()
+        col_numbers = set()
+        for j in range(9):
+            if puzzle[i][j] != 0:
+                if puzzle[i][j] in row_numbers:
+                    return False
+                row_numbers.add(puzzle[i][j])
+            if puzzle[j][i] != 0:
+                if puzzle[j][i] in col_numbers:
+                    return False
+                col_numbers.add(puzzle[j][i])
+    for box_row in range(0, 9, 3):
+        for box_col in range(0, 9, 3):
+            box_numbers = set()
+            for i in range(3):
+                for j in range(3):
+                    num = puzzle[box_row + i][box_col + j]
+                    if num != 0:
+                        if num in box_numbers:
+                            return False
+                        box_numbers.add(num)
+    return True
+
 def solve_sudoku(puzzle):
     for row_index in range(9):
         for col_index in range(9):
@@ -53,10 +78,14 @@ def index():
                         any_filled = True
         
         if any_filled:
-            if solve_sudoku(puzzle):
-                solved = True
+            if is_valid_puzzle(puzzle):
+                if solve_sudoku(puzzle):
+                    solved = True
+                else:
+                    solved = False
+                    message = "No solution exists for the given puzzle."
             else:
-                solved = False
+                message = "The puzzle is invalid. Please ensure no repeated numbers in rows, columns, or subgrids."
         else:
             message = "Please input your Sudoku puzzle."
 
